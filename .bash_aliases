@@ -2,6 +2,9 @@
 alias copy='xclip -sel clip'
 alias config='/usr/bin/git --git-dir=/home/clement/dotfiles/ --work-tree=/home/clement'
 
+# Emacs
+alias em='emacs -nw'
+
 # PHP
 alias switchphp='sudo update-alternatives --config php'
 
