@@ -1,0 +1,71 @@
+! Colorscheme
+
+#include "/home/clement/rxvt/themes/hyper-snazzy.Xresources"
+
+
+! URxvt
+
+URxvt.intensityStyles:   false
+! URxvt.font:              xft:Roboto Mono For Powerline Font:size=11:antialias=true:hinting=true
+URxvt.font : xft:JetBrains Mono:size=12,xft:Inconsolata Nerd Font Mono:size=11
+URxvt.lineSpace:         3
+URxvt.letterSpace:       -1
+URxvt.scrollBar:         false;
+URxvt.internalBorder:    1
+URxvt.urgentOnBell:      true
+URxvt.visualBell:        false
+URxvt.mapAlert:          true
+!URxvt.iconFile:          /usr/share/icons/Numix-Circle/48/apps/terminal.svg
+URxvt.skipBuiltinGlyphs: true
+URxvt.geometry:          120x40
+
+! do not scroll with output
+URxvt.scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt.scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt.scrollTtyKeypress: true
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+URxvt.perl-ext-common: default,matcher,font-size
+
+URxvt.matcher.button: 1
+
+! This needs to be disabled so that ctrl+shift can be used for copy/paste
+! URxvt.iso14755: false
+
+! Bind standard copy/paste keys
+!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! Bind font zooming keys
+! https://github.com/majutsushi/urxvt-font-size
+URxvt.keysym.C-KP_Add:  font-size:increase
+URxvt.keysym.C-KP_Subtract:  font-size:decrease
+URxvt.keysym.C-KP_0:      font-size:reset
+
+! Yankable URLs
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-launcher: firefox-dev
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+! Xft
+
+Xft.antialias: true
+Xft.autohint:  false
+Xft.hinting:   true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+Xft.rgba:      rgba
+Xft.dpi:       96
+
+! Restore Ctrl+Shift+V
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755: false
+URxvt.iso14755_52: false
