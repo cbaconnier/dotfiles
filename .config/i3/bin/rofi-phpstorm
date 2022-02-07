@@ -1,0 +1,9 @@
+#!/bin/bash
+
+LATEST_PHPSTORM_VERSION=$(ls -dt $HOME/.config/JetBrains/PhpStorm* | head -1)
+RECENT_PROJECTS_PATH="${LATEST_PHPSTORM_VERSION}/options/recentProjects.xml"
+
+OLD_PATH='\$USER_HOME\$'
+NEW_PATH=$(echo "${HOME}" | sed -e 's/\//\\\//g')
+
+phpstorm "$( xmllint --xpath '//entry/@key' $RECENT_PROJECTS_PATH | sed -E "s/${OLD_PATH}/${NEW_PATH}/" | awk -F\" '{ print $2 }' | tac | rofi -dmenu -i -p 'PHPStorm projects' )"

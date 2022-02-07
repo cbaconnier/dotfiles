@@ -59,6 +59,7 @@ bindsym $mod+q kill
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id ~/.config/i3/bin/rofi-app-launcher
 bindsym $mod+o exec --no-startup-id ~/.config/i3/bin/rofi-emoji
+bindsym $mod+t exec --no-startup-id ~/.config/i3/bin/rofi-phpstorm
 
 # change focus
 bindsym $mod+h focus left
