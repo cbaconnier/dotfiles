@@ -8,11 +8,5 @@ NEW_PATH=$(echo "${HOME}" | sed -e 's/\//\\\//g')
 
 SELECTED_PROJECT="$( xmllint --xpath '//entry/@key' $RECENT_PROJECTS_PATH | sed -E "s/${OLD_PATH}/${NEW_PATH}/" | awk -F\" '{ print $2 }' | tac | rofi -dmenu -i -p 'PHPStorm projects' )"
 
-#notify-send "PR: ${SELECTED_PROJECT}"
-
-#[ -d $SELECTED_PROJECT] && notify-send "OPENING... ${SELECTED_PROJECT}"
 
 [[ ! -z "${SELECTED_PROJECT}" ]] && phpstorm $SELECTED_PROJECT
-
-
-# phpstorm $SELECTED_PROJECT
