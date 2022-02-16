@@ -24,7 +24,7 @@ XTerm*selectToClipboard: true
 
 
 !! Colorscheme
-#include "/home/clement/.config/uxrvt/themes/hyper-snazzy.Xresources"
+#include "/home/clement/.config/urxvt/themes/hyper-snazzy.Xresources"
 
 
 !! black dark/light
