@@ -72,7 +72,8 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
-# focus_follows_mouse no
+# Disable focus window when mouse over it
+focus_follows_mouse no
 
 # change focus
 bindsym $mod+j focus left
@@ -92,6 +93,12 @@ bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
+# move focused worspace
+bindsym $mod+Mod1+Left move workspace to output left
+bindsym $mod+Mod1+j move workspace to output left
+bindsym $mod+Mod1+Right move workspace to output right
+bindsym $mod+Mod1+semicolon move workspace to output right
+
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -99,7 +106,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
+# workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
@@ -200,6 +207,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
+assign [class="Slack"] $ws1
+assign [class="discord"] $ws1
+
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -301,10 +311,14 @@ exec --no-startup-id clipit
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock
+exec_always --no-startup-id numlockx
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id numlockx off
+# exec_always --no-startup-id numlockx off
 exec --no-startup-id exec ~/bin/refresh-wallpaper
+exec --no-startup-id SpiderOakONE
+exec --no-startup-id slack
+exec --no-startup-id discord
 
 
 # color palette used for the terminal ( ~/.Xresources file )
@@ -348,6 +362,7 @@ bar {
 	tray_output primary
 #	tray_output DP-4
 
+    # Disable scroll on workspace numbers
 	bindsym button4 nop
 	bindsym button5 nop
 #   font xft:URWGothic-Book 11
