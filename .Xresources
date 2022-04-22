@@ -59,13 +59,13 @@ XTerm*selectToClipboard: true
 !! *color7:                          #d8d8d8
 !! *color15:                         #f8f8f8
 
- Xcursor.theme: xcursor-breeze-snow
- Xcursor.size:                       16
+Xcursor.theme: xcursor-breeze-snow
+Xcursor.size:                       16
 
 !!URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
-URxvt.font: 			    xft:JetBrainsMonoNerdFontMono:size=12,xft:DejaVu Sans,xft:NotoEmojiNerdFont
+URxvt.font:                         xft:JetBrainsMonoNerdFontMono:size=12,xft:DejaVu Sans,xft:NotoEmojiNerdFont
 !! URxvt.lineSpace:         	    3
-URxvt.letterSpace:       	    0
+URxvt.letterSpace:       	        0
 
 ! alternative font settings with 'terminus':
 ! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
