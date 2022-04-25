@@ -84,6 +84,11 @@ plugins=(colored-man-pages
 
 source $ZSH/oh-my-zsh.sh
 
+
+if [ -f ~/.bash_aliases ]; then
+  source ~/.bash_aliases
+fi
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -110,25 +115,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias sudo='sudo '
-alias em='emacs -nw'
-dotfiles () {
-    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
-}
 
-
-vapor () {
-local VAPOR_PATH=~/.config/composer/vendor/bin/vapor
-if [[ "$*" == *"production"* ]]; then
-    /bin/echo -n "Enter \"${PWD##*/}\" to confirm: "
-    read answer
-    if [ "$answer" = ${PWD##*/} ]; then
-        $VAPOR_PATH "$@"
-    else
-       echo "Failed"
-    fi
-else
-    $VAPOR_PATH "$@"
-fi
-}
 

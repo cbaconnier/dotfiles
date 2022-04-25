@@ -19,7 +19,7 @@ colors() {
 			fgc=${fgc#37} # white
 			bgc=${bgc#40} # black
 
-			vals="${fgc:+$fgc;}${bgc}"
+    		vals="${fgc:+$fgc;}${bgc}"
 			vals=${vals%%;}
 
 			seq0="${vals:+\e[${vals}m}"
@@ -95,6 +95,10 @@ unset use_color safe_term match_lhs sh
 #alias free='free -m'                      # show sizes in MB
 #alias np='nano -w PKGBUILD'
 #alias more=less
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 xhost +local:root > /dev/null 2>&1
 
