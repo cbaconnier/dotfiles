@@ -190,3 +190,13 @@
 ;  :config
 ;  (pyvenv-mode 1))
 
+
+
+;; XML
+(require 'sgml-mode)
+
+(defun reformat-xml ()
+  (interactive)
+  (save-excursion
+    (sgml-pretty-print (point-min) (point-max))
+    (indent-region (point-min) (point-max))))
