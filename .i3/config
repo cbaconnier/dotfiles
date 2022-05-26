@@ -326,7 +326,7 @@ exec_always --no-startup-id numlockx
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 # exec_always --no-startup-id numlockx off
-exec --no-startup-id exec ~/bin/refresh-wallpaper
+exec --no-startup-id exec ~/.local/bin/refresh-wallpaper
 exec --no-startup-id SpiderOakONE
 exec --no-startup-id slack
 exec --no-startup-id discord
