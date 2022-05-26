@@ -2,6 +2,7 @@
 alias copy='xclip -sel clip'
 alias em='emacs -nw'
 alias sudo='sudo '
+alas bat='bat --theme=GitHub'
 
 dotfiles () {
     /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
