@@ -1,5 +1,7 @@
 export QT_QPA_PLATFORMTHEME="qt5ct"
-export EDITOR=/usr/bin/nano
+export EDITOR="emacsclient -t"
+export VISUAL="emacsclient -c -a emacs"
+
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # fix "xdg-open fork-bomb" export your preferred browser from here
 export BROWSER=/usr/bin/firefox-developer-edition
@@ -15,3 +17,5 @@ export CL_JDK=/usr/lib/jvm/jre-jetbrains
 export DATAGRIP_JDK=/usr/lib/jvm/jre-jetbrains
 export GOLAND_JDK=/usr/lib/jvm/jre-jetbrains
 export STUDIO_JDK=/usr/lib/jvm/jre-jetbrains
+
+
