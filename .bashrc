@@ -2,6 +2,9 @@
 # ~/.bashrc
 #
 
+
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
 [[ $- != *i* ]] && return
 
 colors() {
@@ -111,6 +114,7 @@ shopt -s checkwinsize
 shopt -s expand_aliases
 
 # export QT_SELECT=4
+
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend

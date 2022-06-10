@@ -15,6 +15,7 @@ export PATH=$HOME/.composer/vendor/bin:$PATH
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH
 
 
 # Set list of themes to pick from when loading at random
@@ -114,6 +115,4 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
 
