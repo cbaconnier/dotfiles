@@ -31,5 +31,6 @@
 *.color14: #06B6D4
 
 ! white
-*.color7: #374151
+*.color7: #F5F5F4
+!*.color7: #374151
 *.color15: #2D2D2C
