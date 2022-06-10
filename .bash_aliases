@@ -1,6 +1,7 @@
 # Utilities
 alias copy='xclip -sel clip'
-alias em='emacs -nw'
+alias em='emacsclient --tty'
+alias emacs='emacsclient -c -a "emacs"'
 alias sudo='sudo '
 alias bat='bat --theme=GitHub'
 
