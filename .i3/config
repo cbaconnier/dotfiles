@@ -35,6 +35,9 @@ bindsym $mod+Shift+q kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_recency
 
+# start phpstrorm projects
+bindsym $mod+p exec --no-startup-id ~/.local/bin/dmenu_phpstorm
+
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
 
@@ -223,6 +226,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 
 # Open applications on specific workspaces
+# Run `xprop` to get the class name
 # assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
@@ -316,12 +320,19 @@ mode "resize" {
 }
 
 
+# DPI is overwrite from config-laptop / config dock
+exec xrandr --dpi 96
+
 # Screen layout
 bindsym $mod+Mod1+l mode "$mode_layout"
 set $mode_layout (d)ock, (l)aptop
 mode "$mode_layout" {
-    bindsym d exec --no-startup-id autorandr dock, mode "default"
-    bindsym l exec --no-startup-id autorandr laptop, mode "default"
+    # bindsym d exec --no-startup-id autorandr dock, mode "default"
+    # bindsym l exec --no-startup-id autorandr laptop, mode "default"
+
+    bindsym l exec --no-startup-id ~/.local/bin/config-laptop mode "default"
+    bindsym d exec --no-startup-id ~/.local/bin/config-dock mode "default"
+
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -335,6 +346,7 @@ mode "$mode_layout" {
 # bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
+# exec --no-startup-id protonvpn
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id manjaro-hello
@@ -352,9 +364,11 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 # exec_always --no-startup-id numlockx off
 exec --no-startup-id exec ~/.local/bin/refresh-wallpaper
-exec --no-startup-id SpiderOakONE
+# exec --no-startup-id SpiderOakONE
+exec --no-startup-id kDrive
 exec --no-startup-id slack
 exec --no-startup-id discord
+exec --no-startup-id indicator-sound-switcher
 
 # color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

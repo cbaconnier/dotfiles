@@ -45,6 +45,10 @@ alias logs='tail -f -n 450 storage/logs/*.log | grep -i -P "^\[\d{4}\-\d{2}\-\d{
 
 alias t='php artisan test'
 alias tf='php artisan test --filter'
+alias dusk='php artisan dusk'
+alias duskfs='php artisan dusk:fails'
+alias duskf='php artisan dusk --filter'
+
 alias tinker='php artisan tinker'
 alias mfs='php artisan migrate:fresh --seed'
 alias art='php artisan'

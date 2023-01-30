@@ -73,6 +73,9 @@ export PATH=$HOME/.emacs.d/bin:$PATH
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Turn off all beeps
+unsetopt BEEP
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
