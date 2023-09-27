@@ -1,9 +1,11 @@
 # Utilities
 alias copy='xclip -sel clip'
+alias vim='nvim'
 alias em='emacsclient --tty'
 alias emacs='emacsclient -c -a "emacs"'
 alias sudo='sudo '
 alias bat='bat --theme=GitHub'
+alias start-printer='sudo systemctl start cups'
 
 dotfiles () {
     /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
@@ -28,12 +30,28 @@ fi
 
 # GIT
 alias nah='git reset --hard; git clean -df;'
-gac(){
+gac() {
     git add --all && git commit -m "$*"
 }
 alias gcd='git checkout develop'
 alias gcm='git checkout main'
+commit() {
+    commitMessage="$*"
 
+    git add .
+
+    if [ "$commitMessage" = "" ]; then
+        aicommits
+        return
+    fi
+
+    eval "git commit -a -m '${commitMessage}'"
+}
+gca() {
+for branch in $(git branch --all | grep '^\s*remotes' | egrep --invert-match '(:?HEAD|master)$'); do
+    git branch --track "${branch##*/}" "$branch"
+done
+}
 
 # Tests
 alias phpunit='vendor/bin/phpunit'
@@ -68,6 +86,7 @@ webup() {
            mysql \
            minio \
            mailhog \
-           redis  
+           redis \
+           soketi \
+          meilisearch 
 }
-
