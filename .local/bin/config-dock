@@ -1,0 +1,7 @@
+sed -i -e 's/exec xrandr --dpi 120/exec xrandr --dpi 96/g' /home/clement/.i3/config
+sed -i -e 's/Xft.dpi:       120/Xft.dpi:       96/g' /home/clement/.Xresources
+xrandr --output eDP-1 --off --output HDMI-1 --mode 2560x1440 --pos 0x0 --primary --output DP-2 --mode 2560x1440 --pos 2560x0
+xrdb ~/.Xresources
+xrandr --dpi 96
+i3-msg restart
+~/.local/bin/refresh-wallpaper

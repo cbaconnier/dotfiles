@@ -1,0 +1,7 @@
+sed -i -e 's/exec xrandr --dpi 96/exec xrandr --dpi 120/g' /home/clement/.i3/config
+sed -i -e 's/Xft.dpi:       96/Xft.dpi:       120/g' /home/clement/.Xresources
+xrandr --output eDP-1 --auto --primary
+xrdb ~/.Xresources
+xrandr --dpi 120
+i3-msg restart
+~/.local/bin/refresh-wallpaper

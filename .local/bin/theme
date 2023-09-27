@@ -1,0 +1,53 @@
+#!/bin/bash
+
+CURRENT_COLOR_SCHEME=$(gsettings get org.gnome.desktop.interface color-scheme)
+
+if [ "$CURRENT_COLOR_SCHEME" = "'prefer-dark'" ]; then
+    THEME="light"
+    GTK_THEME="Adwaita"
+    TERMINAL_THEME="solarized-light"
+else
+    THEME="dark"
+    GTK_THEME="Adwaita-dark"
+    TERMINAL_THEME="solarized-dark"
+fi
+
+# Change GTK4.0 settings
+gsettings set org.gnome.desktop.interface color-scheme prefer-${THEME}
+gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME"
+
+# Change GTK3.0 settings
+GTK3_RC_FILE="$HOME/.config/gtk-3.0/settings.ini"
+if [ -e "$GTK3_RC_FILE" ]; then
+    PREFER_DARK="true"
+    if [ "$THEME" = "light" ]; then
+        PREFER_DARK="false"
+    fi
+    sed -i "s/^gtk-theme-name=.*/gtk-theme-name=$GTK_THEME/" "$GTK3_RC_FILE"
+    sed -i "s/^gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=${PREFER_DARK}/" "$GTK3_RC_FILE"
+
+fi
+
+# Change GTK2.0 settings
+GTK2_RC_FILE="$HOME/.gtkrc-2.0.mine"
+if [ -e "$GTK2_RC_FILE" ]; then
+    sed -i "s/^gtk-theme-name=.*/gtk-theme-name=\"$GTK_THEME\"/" "$GTK2_RC_FILE"
+fi
+
+# Change URXVT theme
+PTS_DIR="/dev/pts/"
+
+for each_pts in $PTS_DIR*; do
+    n=${each_pts##*/}
+    if [[ "$n" =~ ^[0-9]+$ ]]; then
+        echo "`~/.dynamic-colors/bin/dynamic-colors switch ${TERMINAL_THEME}`" > "$each_pts"
+    fi
+done
+
+# Change xsettingsd settings
+XSETTINGS_CONF_FILE="$HOME/.config/xsettingsd/xsettingsd.conf"
+if [ -e "$XSETTINGS_CONF_FILE" ]; then
+    sed -i "s/^Net\/ThemeName.*/Net\/ThemeName \"$GTK_THEME\"/" "$XSETTINGS_CONF_FILE"
+    # Restart xsettingsd
+    killall -HUP xsettingsd
+fi
