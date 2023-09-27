@@ -1,0 +1,52 @@
+set commentary
+
+" Use system clipboard
+set clipboard+=unnamed
+
+" Space is my leader.
+let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
+
+" Map 'jk' to exit insert mode and return to normal mode
+inoremap jk <Esc>
+
+" When text is wrapped, move by terminal rows, not lines, unless a count is provided.
+" nnoremap k v:count == 0 ? 'gk' : 'k'
+" nnoremap j v:count == 0 ? 'gj' : 'j'
+
+" Reselect visual selection after indenting.
+xnoremap < <gv
+xnoremap > >gv
+
+" Maintain the cursor position when yanking a visual selection.
+xnoremap y "yy`y
+
+" Disable annoying command line typo.
+nnoremap q: :q
+
+" Paste to replace visual selection without copying it.
+xnoremap p "_dP
+
+" Easy insertion of a trailing ; or , from insert mode.
+inoremap ;; <Esc>A;
+inoremap ,, <Esc>A,
+
+" Quickly clear search highlighting.
+nnoremap <Leader>k :nohlsearch<CR>
+
+" Open the current file in the default program.
+nnoremap <Leader>x :!xdg-open %<CR><CR>
+
+" Move lines up and down.
+inoremap <A-j> <Esc>:move .+1<CR>==gi
+inoremap <A-k> <Esc>:move .-2<CR>==gi
+nnoremap <A-j> :move .+1<CR>==
+nnoremap <A-k> :move .-2<CR>==
+xnoremap <A-j> :move '>+1<CR>gv=gv
+xnoremap <A-k> :move '<-2<CR>gv=gv
+
+# https://github.com/peppy/dotfiles/blob/master/dot_ideavimrc
+# Idea specific
+map <Leader>r <Action>(RenameElement)
+map <Leader>f <Action>(SearchEverywhere)
+
