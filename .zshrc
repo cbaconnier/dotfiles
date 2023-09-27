@@ -16,13 +16,14 @@ export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
-
+export PATH="$HOME/.dynamic-colors/bin:$PATH"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+dynamic-colors init
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
