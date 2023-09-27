@@ -1,6 +1,8 @@
 export QT_QPA_PLATFORMTHEME="qt5ct"
-export EDITOR="emacsclient -t"
-export VISUAL="emacsclient -c -a emacs"
+#export EDITOR="emacsclient -t"
+#export VISUAL="emacsclient -c -a emacs"
+export EDITOR="vim"
+export VISUAL="vim"
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # fix "xdg-open fork-bomb" export your preferred browser from here
