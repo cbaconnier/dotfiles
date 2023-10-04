@@ -1,0 +1,21 @@
+[user]
+	email = clement@baconnier.ch
+	name = Clément Baconnier
+[alias]
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	recent-branches = "!git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | nl -w2 -s'> ' "
+	r = "!f() { git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | awk -v var=\"$1\" 'NR==var' | xargs git checkout ; }; f"
+	pushf = push --force-with-lease
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[cor]
+	editor = vim
+[core]
+	editor = vim
