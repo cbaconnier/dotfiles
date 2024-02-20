@@ -41,3 +41,11 @@ vim.keymap.set('n', '<A-k>', ':move .-2<CR>==')
 vim.keymap.set('v', '<A-j>', ":move '>+1<CR>gv=gv")
 vim.keymap.set('v', '<A-k>', ":move '<-2<CR>gv=gv")
 
+
+-- Map é and à directly for vim-unimpaired
+vim.api.nvim_set_keymap('n', 'é', '[', { noremap = false })
+vim.api.nvim_set_keymap('n', 'à', ']', { noremap = false })
+vim.api.nvim_set_keymap('o', 'é', '[', { noremap = false })
+vim.api.nvim_set_keymap('o', 'à', ']', { noremap = false })
+vim.api.nvim_set_keymap('x', 'é', '[', { noremap = false })
+vim.api.nvim_set_keymap('x', 'à', ']', { noremap = false })

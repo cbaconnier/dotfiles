@@ -6,7 +6,7 @@ alias emacs='emacsclient -c -a "emacs"'
 alias sudo='sudo '
 alias bat='bat --theme=GitHub'
 alias start-printer='sudo systemctl start cups'
-
+alias ocr='flameshot gui --raw | tesseract stdin stdout -l eng+fra | xclip -in -selection clipboard'
 dotfiles () {
     /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
 }
@@ -85,7 +85,7 @@ webup() {
     docker start \
            mysql \
            minio \
-           mailhog \
+           mailpit \
            redis \
            soketi \
           meilisearch 

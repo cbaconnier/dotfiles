@@ -40,3 +40,4 @@ message/rfc822=userapp-Thunderbird.desktop;
 application/pdf=firefox-developer-edition.desktop;epdfview.desktop;
 application/x-bittorrent=deluge.desktop;
 application/illustrator=viewnior.desktop;firefox-developer-edition.desktop;
+application/x-ms-wim=nvim.desktop;

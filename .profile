@@ -1,3 +1,4 @@
+export TERMINAL=kitty
 export QT_QPA_PLATFORMTHEME="qt5ct"
 #export EDITOR="emacsclient -t"
 #export VISUAL="emacsclient -c -a emacs"

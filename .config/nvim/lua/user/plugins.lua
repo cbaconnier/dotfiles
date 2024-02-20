@@ -23,40 +23,24 @@ require('packer').init({
 
 local use = require('packer').use
 
--- Set theme catppuccin
-use({
-    "catppuccin/nvim", as = "catppuccin",
-    config = function()
-        require('catppuccin').setup({
-                flavour = "latte",
-                transparent_background = true,
-            })
-
-        vim.cmd.colorscheme "catppuccin"
-
-        vim.api.nvim_set_hl(0, 'FloatBorder', {
-                -- fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-                fg = '#ffffff',
-                -- bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-                bg = '#ffffff',
-            })
-
-    end,
-})
-
--- Set theme Github
--- use({
---   'projekt0n/github-nvim-theme',
---   config = function()
---       require('github-theme').setup({
---               options = {
---                   transparent = true, -- Disable setting background
---               }
---           })
-
---       vim.cmd('colorscheme github_light')
---   end
--- })
+use 'navarasu/onedark.nvim'
+require('onedark').setup {
+   style = 'light',
+   transparent= true,
+   highlights = {
+       FloatBorder = { 
+        bg = '$bg1'
+       },
+        StatusLineNonText = {
+         fg = '$bg0',
+         bg = '$bg2'
+        },
+       NvimTreeVertSplit = {
+           fg = '$bg0'
+       }
+   }
+}
+require('onedark').load()
 
 
 -- Packer can manage itself.
@@ -114,7 +98,9 @@ use({
 use({
     'windwp/nvim-autopairs',
     config = function()
-        require('nvim-autopairs').setup()
+        require('nvim-autopairs').setup({ 
+               map_cr = false,
+            })
     end
 })
 
@@ -145,7 +131,7 @@ use({
 })
 
 
---Automatically fis indentation when pasting code.
+--Automatically fix indentation when pasting code.
 use({
     'sickill/vim-pasta',
     config = function()
@@ -153,11 +139,161 @@ use({
     end,
 })
 
+
+-- Fuzzy finder
+use({
+  'nvim-telescope/telescope.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim',
+    'kyazdani42/nvim-web-devicons',
+    'nvim-telescope/telescope-live-grep-args.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  },
+  config = function()
+    require('user/plugins/telescope')
+  end,
+})
+
+-- File tree sidebar
+use({
+  'kyazdani42/nvim-tree.lua',
+  requires = 'kyazdani42/nvim-web-devicons',
+  config = function()
+    require('user/plugins/nvim-tree')
+  end,
+})
+
+
+-- Language Server Protocol (LSP)
+use({
+    'neovim/nvim-lspconfig',
+    requires = {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'b0o/schemastore.nvim',
+        'jose-elias-alvarez/null-ls.nvim',
+        'jayp0521/mason-null-ls.nvim',
+    },
+    config = function()
+        require('user/plugins/lspconfig')
+    end,
+})
+
+
+-- UI - Better status line.
+use({
+        'nvim-lualine/lualine.nvim',
+        requires = 'kyazdan142/nvim-web-devicons',
+        config = function()
+            require('user/plugins/lualine')
+        end,
+    })
+
+-- UI - Display buffers as tabs.
+use({
+        'akinsho/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        after = 'onedark.nvim',
+        config = function()
+            require('bufferline').setup()
+            -- require('user/plugins/bufferline')
+        end,
+    })
+
+-- UI - Display indentation lines.
+use({
+  'lukas-reineke/indent-blankline.nvim',
+  config = function()
+    require('user/plugins/indent-blankline')
+  end,
+})
+
+-- Add a dashboard
+use({
+    'nvimdev/dashboard-nvim',
+    config = function()
+        require('user/plugins/dashboard-nvim')
+    end
+    })
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
     require('packer').sync()
 end
+
+-- Git integration.
+use({
+  'lewis6991/gitsigns.nvim',
+  config = function()
+    require('gitsigns').setup()
+    vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
+    vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
+    vim.keymap.set('n', 'gs', ':Gitsigns stage_hunk<CR>')
+    vim.keymap.set('n', 'gS', ':Gitsigns undo_stage_hunk<CR>')
+    vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
+    vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
+  end,
+})
+
+-- Git commands.
+use({
+  'tpope/vim-fugitive',
+  requires = 'tpope/vim-rhubarb',
+})
+
+
+-- Floating terminal
+use({
+    'voldikss/vim-floaterm',
+    config = function()
+        vim.g.floaterm_width = 0.8
+        vim.g.floaterm_height = 0.8
+        -- vim.g.floaterm_height = 0.4
+        -- vim.g.floaterm_wintype = 'split'
+        vim.keymap.set('n', '<F1>', ':FloatermToggle<CR>')
+        vim.keymap.set('t', '<F1>', '<C-\\><C-n>:FloatermToggle<CR>')
+        vim.cmd([[
+            highlight link Floaterm CursorLine
+            highlight link FloatermBorder CursorLineBg
+        ]])
+    end
+})
+
+
+-- Improve syntax highlighting
+use({
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+        require('nvim-treesitter.install').update({ with_sync = true })
+    end,
+    requires = {
+     'JoosepAlviste/nvim-ts-context-commentstring',
+     'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    config = function()
+        require('user.plugins.treesitter')
+    end,
+})
+
+-- Completion
+use({
+  'hrsh7th/nvim-cmp',
+  requires = {
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'onsails/lspkind-nvim',
+  },
+  config = function()
+    require('user/plugins/cmp')
+  end,
+})
+
+
 
 vim.cmd([[
 augroup packer_user_config

@@ -15,13 +15,13 @@ xterm*dynamicColors: true
 urxvt*dynamicColors: on
 
 !! Colorscheme
-#include "/home/clement/.config/urxvt/themes/light-theme.Xresources"
+!! #include "/home/clement/.config/urxvt/themes/light-theme.Xresources"
 
 Xcursor.theme: xcursor-breeze-snow
 Xcursor.size:                       16
 
 !!URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
-URxvt.font:                         xft:JetBrainsMonoNerdFontMono:size=12,xft:DejaVu Sans,xft:NotoEmojiNerdFont
+URxvt.font:                         xft:JetBrainsMonoNerdFontMono:size=12,xft:DejaVu Sans,xft:NotoEmojiNerdFont,
 !! URxvt.lineSpace:         	    3
 URxvt.letterSpace:       	        0
 
@@ -31,7 +31,7 @@ URxvt.letterSpace:       	        0
 !! terminus names see end of file!
 
 URxvt.depth:                      32
-!! URxvt.background:                 [100]#222D31
+! URxvt.background:                 [100]#222D31
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true

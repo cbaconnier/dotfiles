@@ -1,7 +1,11 @@
 set commentary
+set multiple-cursors
+set surround
+set matchit
 
 " Use system clipboard
-set clipboard+=unnamed
+#set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " Space is my leader.
 let mapleader = "\<Space>"
@@ -19,17 +23,29 @@ xnoremap < <gv
 xnoremap > >gv
 
 " Maintain the cursor position when yanking a visual selection.
-xnoremap y "yy`y
+" xnoremap y "yy`y
 
 " Disable annoying command line typo.
-nnoremap q: :q
+" nnoremap q: :q
 
 " Paste to replace visual selection without copying it.
-xnoremap p "_dP
+" xnoremap p "_dP
+
+" Map the * register to the default register
+nnoremap p "*p
+vnoremap p "*p
+nnoremap P "*p
+vnoremap P "*p
+
+" Map the + register to the default register
+nnoremap p "+p
+vnoremap p "+p
+nnoremap P "+p
+vnoremap P "+p
 
 " Easy insertion of a trailing ; or , from insert mode.
-inoremap ;; <Esc>A;
-inoremap ,, <Esc>A,
+" inoremap ;; <Esc>A;
+" inoremap ,, <Esc>A,
 
 " Quickly clear search highlighting.
 nnoremap <Leader>k :nohlsearch<CR>
@@ -50,3 +66,5 @@ xnoremap <A-k> :move '<-2<CR>gv=gv
 map <Leader>r <Action>(RenameElement)
 map <Leader>f <Action>(SearchEverywhere)
 
+map <C-h> <Action>(PreviousTab)
+map <C-l> <Action>(NextTab)
