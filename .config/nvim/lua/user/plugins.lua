@@ -314,6 +314,13 @@ use({
   end,
 })
 
+-- Testing Helper
+use({
+  'vim-test/vim-test',
+  config = function()
+    require('user/plugins/vim-test')
+  end,
+})
 
 vim.cmd([[
 augroup packer_user_config

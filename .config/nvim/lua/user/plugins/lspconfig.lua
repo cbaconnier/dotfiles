@@ -44,7 +44,9 @@ require('lspconfig').rust_analyzer.setup({
 local null_ls = require('null-ls')
 null_ls.setup({
   sources = {
-    null_ls.builtins.diagnostics.phpstan,
+    null_ls.builtins.diagnostics.phpstan.with({
+      temp_dir = "/tmp"
+      }),
     null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
     null_ls.builtins.diagnostics.eslint_d.with({
       condition = function(utils)
