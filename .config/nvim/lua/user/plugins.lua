@@ -305,6 +305,15 @@ use({
     end,
 })
 
+-- Project Configuration
+use({
+  'tpope/vim-projectionist',
+  requires = 'tpope/vim-dispatch',
+  config = function()
+    require('user/plugins/projectionist')
+  end,
+})
+
 
 vim.cmd([[
 augroup packer_user_config
