@@ -41,20 +41,31 @@ require('lspconfig').rust_analyzer.setup({
   })
 
 -- null-ls
-require('null-ls').setup({
+local null_ls = require('null-ls')
+null_ls.setup({
   sources = {
-    require('null-ls').builtins.diagnostics.eslint_d.with({
+    null_ls.builtins.diagnostics.phpstan,
+    null_ls.builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
+    null_ls.builtins.diagnostics.eslint_d.with({
       condition = function(utils)
         return utils.root_has_file({ '.eslintrc.js' })
       end,
     }),
-    require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
-    require('null-ls').builtins.formatting.eslint_d.with({
+    null_ls.builtins.formatting.eslint_d.with({
       condition = function(utils)
         return utils.root_has_file({ '.eslintrc.js' })
       end,
     }),
-    require('null-ls').builtins.formatting.prettierd,
+     null_ls.builtins.formatting.pint.with({
+      condition = function(utils)
+        return utils.root_has_file({ 'vendor/bin/pint' })
+      end,
+    }),
+    null_ls.builtins.formatting.prettier.with({
+          condition = function(utils)
+            return utils.root_has_file({ '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.js', 'prettier.config.js' })
+          end,
+        }),
   },
 })
 
@@ -73,4 +84,5 @@ vim.keymap.set('n', '<Leader>lr', ':LspRestart<CR>', { silent = true })
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
-vim.api.nvim_create_user_command('Format', vim.lsp.buf.format, {})
+vim.api.nvim_create_user_command('Format', function() vim.lsp.buf.format({ timeout_ms = 5000 }) end, {})
+
