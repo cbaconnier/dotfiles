@@ -1,0 +1,33 @@
+snippet pubf "public method"
+	public function ${1}(${2}): $3
+	{
+		${0}
+	}
+
+snippet prof "protected method"
+	protected function ${1}(${2}): $3
+	{
+		${0}
+	}
+
+snippet prif "private method"
+	protected function ${1}(${2}): $3
+	{
+		${0}
+	}
+
+snippet @test "test method (annotation)"
+	/** @test */
+	public function ${1}(): void
+	{
+		${0}
+	}
+
+snippet @var "PHPDoc var declaration"
+	/** @var ${1} {$2} */
+
+snippet @prop "PHPDoc property declaration"
+	/** @property ${1} {$2} */
+
+snippet @propr "PHPDoc property-read declaration"
+	/** @property-read ${1} {$2} */

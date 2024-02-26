@@ -28,7 +28,7 @@ require('onedark').setup {
    style = 'light',
    transparent= true,
    highlights = {
-       FloatBorder = { 
+       FloatBorder = {
         bg = '$bg1'
        },
         StatusLineNonText = {
@@ -51,7 +51,7 @@ use('tpope/vim-commentary')
 
 -- Add, change, and delete surrounding text.
 use('tpope/vim-surround')
-    
+
 -- Useful commands like :Rename and SudoWrite.
 use('tpope/vim-eunuch')
 
@@ -98,7 +98,7 @@ use({
 use({
     'windwp/nvim-autopairs',
     config = function()
-        require('nvim-autopairs').setup({ 
+        require('nvim-autopairs').setup({
                map_cr = false,
             })
     end
@@ -179,6 +179,14 @@ use({
     end,
 })
 
+-- LSP Progress bar
+use({
+    'linrongbin16/lsp-progress.nvim',
+    config = function()
+      -- require('lsp-progress').setup()
+    require('user/plugins/lsp-progress')
+    end
+})
 
 -- UI - Better status line.
 use({
