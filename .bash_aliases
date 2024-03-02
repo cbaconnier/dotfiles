@@ -4,6 +4,7 @@ alias vim='nvim'
 alias em='emacsclient --tty'
 alias emacs='emacsclient -c -a "emacs"'
 alias sudo='sudo '
+alias ranger='. ranger'
 alias bat='bat --theme=GitHub'
 alias start-printer='sudo systemctl start cups'
 alias ocr='flameshot gui --raw | tesseract stdin stdout -l eng+fra | xclip -in -selection clipboard'
@@ -13,40 +14,42 @@ dotfiles () {
  
 
 vapor () {
-local VAPOR_PATH=~/.config/composer/vendor/bin/vapor
-if [[ "$*" == *"production"* ]]; then
-    /bin/echo -n "Enter \"${PWD##*/}\" to confirm: "
-    read answer
-    if [ "$answer" = ${PWD##*/} ]; then
-	$VAPOR_PATH "$@"
+    local VAPOR_PATH=~/.config/composer/vendor/bin/vapor
+    if [[ "$*" == *"production"* ]]; then
+        /bin/echo -n "Enter \"${PWD##*/}\" to confirm: "
+        read answer
+        if [ "$answer" = ${PWD##*/} ]; then
+        $VAPOR_PATH "$@"
+        else
+           echo "Failed"
+        fi
     else
-       echo "Failed"
+        $VAPOR_PATH "$@"
     fi
-else
-    $VAPOR_PATH "$@"
-fi
 }
 
 
 # GIT
-alias nah='git reset --hard; git clean -df;'
+# alias nah='git reset --hard; git clean -df;'
+
+nah() {
+    echo -n "Are you sure you want to clear all changes in git? (yes/no):"
+    read response
+    if [ "$response" = "yes" ]; then
+        echo "Resetting changes in git..."
+        git reset --hard HEAD;
+        git clean -df;
+        echo "Changes cleared successfully."
+    else
+        echo "Operation aborted."
+    fi
+}
+
 gac() {
     git add --all && git commit -m "$*"
 }
 alias gcd='git checkout develop'
 alias gcm='git checkout main'
-commit() {
-    commitMessage="$*"
-
-    git add .
-
-    if [ "$commitMessage" = "" ]; then
-        aicommits
-        return
-    fi
-
-    eval "git commit -a -m '${commitMessage}'"
-}
 gca() {
 for branch in $(git branch --all | grep '^\s*remotes' | egrep --invert-match '(:?HEAD|master)$'); do
     git branch --track "${branch##*/}" "$branch"

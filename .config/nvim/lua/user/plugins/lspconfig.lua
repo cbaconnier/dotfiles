@@ -7,17 +7,17 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 -- vim.cmd('set verbosefile=/tmp/neovim.log')
 -- vim.cmd('set verbose=15')
 -- PHP
--- require('lspconfig').intelephense.setup({ capabilities = capabilities })
-local phpactor_path = '/home/clement/.local/share/phpactor/bin/phpactor'
-require('lspconfig').phpactor.setup{
-    cmd = { phpactor_path, 'language-server' },
-    capabilities = capabilities,
-    on_attach = on_attach,
-    init_options = {
-        ["language_server_phpstan.enabled"] = true,
-        ["language_server_psalm.enabled"] = false,
-    }
-}
+require('lspconfig').intelephense.setup({ capabilities = capabilities })
+-- local phpactor_path = '/home/clement/.local/share/phpactor/bin/phpactor'
+-- require('lspconfig').phpactor.setup{
+--     cmd = { phpactor_path, 'language-server' },
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+--     init_options = {
+--         ["language_server_phpstan.enabled"] = true,
+--         ["language_server_psalm.enabled"] = false,
+--     }
+-- }
 
 -- Typescript
 require('lspconfig').tsserver.setup({
@@ -97,26 +97,26 @@ null_ls.setup({
 })
 
 -- Laravel
-local lspconfig = require'lspconfig'
-local configs = require 'lspconfig.configs'
-local laravel_dev_tools_path = '/home/clement/.local/share/laravel-dev-tools/laravel-dev-tools'
--- Configure it
-configs.blade = {
-  default_config = {
-    -- Path to the executable: laravel-dev-generators
-    cmd = { laravel_dev_tools_path, "lsp" },
-    filetypes = {'blade'};
-    root_dir = function(fname)
-      return lspconfig.util.find_git_ancestor(fname)
-    end;
-    settings = {};
-  };
-}
--- Set it up
-lspconfig.blade.setup{
-  -- Capabilities is specific to my setup.
-  capabilities = capabilities
-}
+-- local lspconfig = require'lspconfig'
+-- local configs = require 'lspconfig.configs'
+-- local laravel_dev_tools_path = '/home/clement/.local/share/laravel-dev-tools/laravel-dev-tools'
+-- -- Configure it
+-- configs.blade = {
+--   default_config = {
+--     -- Path to the executable: laravel-dev-generators
+--     cmd = { laravel_dev_tools_path, "lsp" },
+--     filetypes = {'blade'};
+--     root_dir = function(fname)
+--       return lspconfig.util.find_git_ancestor(fname)
+--     end;
+--     settings = {};
+--   };
+-- }
+-- -- Set it up
+-- lspconfig.blade.setup{
+--   -- Capabilities is specific to my setup.
+--   capabilities = capabilities
+-- }
 
 
 require('mason-null-ls').setup({ automatic_installation = true })

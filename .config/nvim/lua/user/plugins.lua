@@ -180,13 +180,13 @@ use({
 })
 
 -- LSP Progress bar
-use({
-    'linrongbin16/lsp-progress.nvim',
-    config = function()
-      -- require('lsp-progress').setup()
-    require('user/plugins/lsp-progress')
-    end
-})
+--use({
+--    'linrongbin16/lsp-progress.nvim',
+--    config = function()
+--      --require('lsp-progress').setup()
+--      require('user/plugins/lsp-progress')
+--    end
+--})
 
 -- UI - Better status line.
 use({
